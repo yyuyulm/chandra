@@ -19,7 +19,7 @@ def generate_hf(
         max_output_tokens = settings.MAX_OUTPUT_TOKENS
 
     messages = [
-        process_batch_element(item, model.processor, bbox_scale) for item in batch
+        [process_batch_element(item, model.processor, bbox_scale)] for item in batch
     ]
     text = model.processor.apply_chat_template(
         messages, tokenize=False, add_generation_prompt=True
